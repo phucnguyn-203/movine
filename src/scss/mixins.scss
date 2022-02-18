@@ -1,0 +1,8 @@
+@mixin button($bgColor, $fontSize, $color) {
+    font-size: $fontSize;
+    background-color: $bgColor;
+    color: $color;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}

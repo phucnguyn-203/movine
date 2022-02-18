@@ -1,0 +1,133 @@
+@use '../../scss/variables';
+@import '../../scss//mixins';
+@import '../../scss/animations.scss';
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: transparent;
+    padding: 0 30px;
+    z-index: 100;
+    transition: all linear .3s;
+
+    .header__nav-mobile-icon{
+        display: none;
+    }
+    
+    .header__left-section {
+        display: flex;
+        align-items: center;
+
+        .header__logo {
+            margin-right: 20px;
+            font-size: 30px;
+            font-weight: bold;
+
+            .header__logo-link {
+                text-decoration: none;
+                color: variables.$white-color,
+            }
+
+            .header__logo-highlight {
+                color: variables.$primary-color;
+            }
+        }
+
+        .header__nav-list {
+            display: flex;
+            align-items: center;
+            list-style: none;
+
+            .header__nav-item-link {
+                padding: 0 25px;
+                font-weight: 500;
+                font-size: 15px;
+                transition: all linear .3s;
+                text-decoration: none;
+                color: variables.$white-color;
+                &:hover {
+                    color: variables.$primary-color;
+                }
+               
+            }
+
+            .header__nav-item-link.active {
+                color: variables.$primary-color;
+            }
+        }
+        
+    }
+
+    .header__right-section {
+        display: flex;
+        align-items: center;
+
+        .header__search-icon {
+            display: flex;
+            color: variables.$white-color;
+            font-size: 30px;
+            font-weight: 500;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .button {
+            @include button($bgColor:variables.$primary-color, $fontSize: 16px, $color: variables.$white-color);
+            padding: 10px 20px;
+            border-radius: 10px 5px;
+        }
+    }
+
+    .overplay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba($color: #000000, $alpha: .5);
+        z-index: 1;
+        display: none;
+    }
+
+    .header__nav-mobile {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        background-color: variables.$black-color;
+        width: 250px;
+        z-index: 2;
+        transform: translateX(-250px);
+        transition: all linear .3s;
+
+        .header__nav-list-mobile {
+            margin-top: 40px;
+
+            .header__nav-list-item-mobile {
+                padding: 15px;
+
+                .header__nav-item-link-mobile {
+                    text-decoration: none;
+                    color: variables.$white-color;
+
+                }
+
+                .header__nav-item-link-mobile.active {
+                    color: variables.$primary-color;
+                }
+            }
+        }
+        
+    }
+}
+
+.header.header__toggle {
+    background-color: variables.$black-color;
+    animation: animateToTop linear .4s;
+}

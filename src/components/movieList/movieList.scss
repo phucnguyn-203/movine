@@ -1,0 +1,7 @@
+@use '../../scss/variables';
+
+.movie-list__title {
+   color: variables.$white-color;
+   font-size: 25px;
+   margin: 25px 0;
+}

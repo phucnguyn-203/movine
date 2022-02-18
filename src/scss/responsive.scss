@@ -1,0 +1,64 @@
+@use '../scss/variables';
+
+// PC
+@media (min-width: 1024px) {
+
+}
+
+// Tablet and Mobile 
+@media (max-width: 1023px) {
+    .banner__poster {
+        display: none;
+    }
+
+    .movie__overview {
+        display: none;
+    }
+}
+
+// Tablet 
+@media (min-width: 740px) and (max-width: 1023px) {
+
+}
+
+// Mobile 
+@media (max-width: 739px) {
+    .header {
+        padding: 0 15px;
+        height: 50px;
+    }
+    
+    .header__nav {
+        display: none !important;
+    }
+    .header__nav-mobile-icon {
+        display: block !important;
+        color: variables.$primary-color;
+        font-size: 30px;
+        cursor: pointer;
+    }
+
+    .overplay.active {
+        display: block;
+    }
+
+    .header__nav-mobile.active {
+        transform: translateX(0);
+    }
+    .banner__info {
+        width: 100% !important;
+
+        .movie__title {
+            font-size: 18px !important;
+            margin: 30px 0;
+        }
+
+        .movie__action {
+            .button {
+                padding: 10px 15px !important;
+            }
+        }
+    }
+
+
+}

@@ -1,0 +1,22 @@
+@use '../../scss/variables.scss';
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    color: variables.$white-color;
+    background-color: variables.$black-color;
+
+    .footer__social-link {
+        text-decoration: none;
+        color: variables.$white-color;
+        margin-right: 10px;
+        font-size: 30px;
+        transition: all linear .3s;
+        
+        &:hover {
+            color: variables.$primary-color;
+        }
+    }
+}

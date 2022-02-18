@@ -1,0 +1,10 @@
+@keyframes animateToTop {
+    0% {
+        top: -60px;
+        opacity: 0;
+    }
+    100% {
+        top: 0px;
+        opacity: 1;
+    }
+}
