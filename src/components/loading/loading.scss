@@ -1,0 +1,21 @@
+@use '../../scss/variables.scss';
+@import '../../scss/animations.scss';
+
+.loading__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .loading {
+          border: 4px solid #f3f3f3;
+          border-radius: 50%;
+          border-top: 4px solid variables.$primary-color;
+          width: 64px;
+          height: 64px;
+          -webkit-animation: spin 2s linear infinite; /* Safari */
+          animation: spin 2s linear infinite;
+    }
+
+
+}

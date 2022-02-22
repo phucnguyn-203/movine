@@ -82,7 +82,7 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li className='header__nav-list-item-mobile'>
-                        <NavLink to='/tv' className={`header__nav-item-link-mobile ${(isActive) =>
+                        <NavLink to='/tvshows' className={`header__nav-item-link-mobile ${(isActive) =>
                             isActive ? 'active' : undefined}`}
                         >
                             TV Shows
@@ -122,7 +122,7 @@ const Header = () => {
                             </NavLink>
                         </li>
                         <li className='header__nav-list-item'>
-                            <NavLink to='/tv' className={`header__nav-item-link ${(isActive) =>
+                            <NavLink to='/tvshows' className={`header__nav-item-link ${(isActive) =>
                                 isActive ? 'active' : undefined}`}
                             >
                                 TV Shows

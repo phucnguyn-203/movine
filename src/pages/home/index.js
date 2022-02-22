@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <>
             <Banner />
-            <div className='movies-list__container'>
+            <div className='movie-list__container'>
                 <MovieList
                     mediaType='movie'
                     type='trending'

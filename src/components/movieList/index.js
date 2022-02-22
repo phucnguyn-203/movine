@@ -30,6 +30,7 @@ const MovieList = ({ mediaType, type }) => {
             <h1 className='movie-list__title'>{`${mediaType.charAt(0).toUpperCase()}${mediaType.slice(1)} ${type}`}</h1>
             <Slider
                 movies={movies}
+                mediaType={mediaType}
             />
         </>
     );

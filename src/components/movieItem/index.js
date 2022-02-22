@@ -1,15 +1,18 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 import './movieItem.scss';
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, mediaType }) => {
     return (
-        <div className='movie-item'>
-            <div className='movie-poster'>
-                <img src={`${process.env.REACT_APP_IMAGE_ENDPOINT}${movie?.poster_path}`} alt='poster' />
+        <Link to={`/details/${mediaType}/${movie?.id}`} style={{ textDecoration: 'none' }}>
+            <div className='movie-item'>
+                <div className='movie-poster'>
+                    <img src={`${process.env.REACT_APP_IMAGE_ENDPOINT}${movie?.poster_path}`} alt='poster' />
+                </div>
+                <p className='movie-title'>{movie?.title || movie?.name}</p>
             </div>
-            <p className='movie-title'>{movie?.title || movie?.name}</p>
-        </div>
+        </Link>
+
     );
 };
 

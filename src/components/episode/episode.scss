@@ -1,20 +1,15 @@
 @use '../../scss/variables';
 
 
-.movie-item {
+.episode-item {
+    text-decoration: none;
+    display: block;
     border-radius: 10px;
     overflow: hidden;
     background-color: variables.$black-color;
     cursor: pointer;
-    &:hover .movie-poster {
-        img {
-            opacity: 0.5;
-        }
-    }
-    &:hover .movie-title {
-        color: variables.$primary-color;
-    }
-    .movie-poster {
+   
+    .episode-poster {
         height: 336px;
         img {
             width: 100%;
@@ -24,7 +19,7 @@
         }
     }
 
-    .movie-title {
+    .episode-number {
         font-size: 15px;
         color: variables.$white-color;
         padding: 10px;

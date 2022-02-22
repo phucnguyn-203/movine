@@ -8,9 +8,10 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import MovieItem from '../movieItem';
 
 
-const Slider = ({ movies }) => {
+const Slider = ({ movies, mediaType }) => {
 
     const { width } = useWindowDimensions();
+    //item is show on slider by width screen
     let slidesItem;
     if (width > 1024) {
         slidesItem = 5;
@@ -19,7 +20,7 @@ const Slider = ({ movies }) => {
     } else {
         slidesItem = 2;
     }
-
+    
     return (
         <Swiper
             modules={[Navigation]}
@@ -33,6 +34,7 @@ const Slider = ({ movies }) => {
                 >
                     <MovieItem
                         movie={movie}
+                        mediaType={mediaType}
                     />
                 </SwiperSlide>
             ))}

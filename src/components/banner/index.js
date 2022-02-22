@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import './banner.scss';
@@ -31,8 +32,8 @@ const Banner = () => {
                     <h1 className='movie__title'>{banner?.title || banner?.name}</h1>
                     <p className='movie__overview'>{banner?.overview}</p>
                     <div className='movie__action'>
-                        <button className='button'>Watch Now</button>
-                        <button className='button'>View Info</button>
+                        <Link to={banner?.media_type === 'movie' ? `/watch/${banner?.media_type}/${banner?.id}` : `/watch/${banner?.media_type}/${banner?.id}/season/1/esp/1`} className='button'>Watch Now</Link>
+                        <Link to={`/details/${banner?.media_type}/${banner?.id}`} className='button'>View Info</Link>
                     </div>
                 </div>
                 <div className='banner__poster'>
