@@ -3,16 +3,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
 import '../../scss/grid.scss';
 
 const Trending = () => {
 
+    useDocumentTitle('Trending');
+
     const [page, setPage] = useState(1);
     const [trendings, setTrendings] = useState([]);
     const [totalPages, setTotalPages] = useState();
     const [isLoading, setIsLoading] = useState(true);
+    
     const getTrending = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`);

@@ -1,20 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-import './details.scss';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import CastList from '../../components/castList';
 import Similar from '../../components/similar';
+import './details.scss';
 
 
 const Details = () => {
+    
     const { mediaType, id } = useParams();
     //state to store details movie
     const [details, setDetails] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const bannerRef = useRef();
+
+    useDocumentTitle(`${details?.title || details?.name}`);
 
     useEffect(() => {
         const getDetails = async () => {

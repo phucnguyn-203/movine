@@ -3,8 +3,11 @@ import React from 'react';
 import './home.scss';
 import Banner from '../../components/banner';
 import MovieList from '../../components/movieList';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const Home = () => {
+    
+    useDocumentTitle('Movine');
 
     return (
         <>

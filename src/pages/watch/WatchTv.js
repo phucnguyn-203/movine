@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import './watch.scss';
 import Episode from '../../components/episode';
 import Similar from '../../components/similar';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 
 const WatchTv = () => {
     const { season, esp, id } = useParams();
@@ -15,6 +16,8 @@ const WatchTv = () => {
     const [episodes, setEpisodes] = useState();
 
     const videoRef = useRef();
+
+    useDocumentTitle(`Watch | ${tvDetails?.name}`)
 
     // get details of tv show
     useEffect(() => {

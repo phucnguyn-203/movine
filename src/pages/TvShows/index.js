@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
 import '../../scss/grid.scss';
 
 const TvShows = () => {
+
+    useDocumentTitle('Tv Shows');
 
     const [page, setPage] = useState(1);
     const [tvShows, setTvShows] = useState([]);

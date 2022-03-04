@@ -4,12 +4,16 @@ import axios from 'axios';
 
 import './watch.scss';
 import Similar from '../../components/similar';
+import useDocumentTitle from '../../hooks/useDocumentTitle';
+
 
 const WatchMovie = () => {
 
     const { id } = useParams();
 
     const [movieDetail, setMovieDetail] = useState();
+
+    useDocumentTitle(`Watch | ${movieDetail?.title || movieDetail?.name}`)
 
     useEffect(() => {
         const getMovieDetails = async () => {
