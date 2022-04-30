@@ -11,7 +11,7 @@ import './details.scss';
 
 
 const Details = () => {
-    
+
     const { mediaType, id } = useParams();
     //state to store details movie
     const [details, setDetails] = useState();
@@ -34,7 +34,6 @@ const Details = () => {
         }
         getDetails();
     }, [mediaType, id]);
-
 
     return (
         <>

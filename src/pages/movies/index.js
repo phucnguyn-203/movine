@@ -17,7 +17,6 @@ const Movies = () => {
     const [totalPages, setTotalPages] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
-
     const getMovies = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`);

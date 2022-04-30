@@ -5,7 +5,6 @@ import './header.scss';
 
 const Header = () => {
 
-
     useEffect(() => {
         const menuMobile = document.querySelector('.header__nav-mobile-icon');
         const overplay = document.querySelector('.overplay');
@@ -49,10 +48,8 @@ const Header = () => {
 
 
     return (
-
         <header className='header'>
             <div className='overplay'></div>
-
             {/*Mobile menu*/}
             <div className="header__nav-mobile-icon">
                 <ion-icon name="menu-outline"></ion-icon>
@@ -134,9 +131,11 @@ const Header = () => {
 
             <div className='header__right-section'>
                 <div className='header__search'>
-                    <div className="header__search-icon">
-                        <ion-icon name="search"></ion-icon>
-                    </div>
+                    <Link to="/search" style={{ display: "block" }}>
+                        <div className="header__search-icon">
+                            <ion-icon name="search"></ion-icon>
+                        </div>
+                    </Link>
                 </div>
                 <button className='button'>Login</button>
             </div>
