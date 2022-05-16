@@ -5,7 +5,7 @@ import axios from 'axios';
 import './watch.scss';
 import Similar from '../../components/similar';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-
+import { setHistoryMovie } from '../../utilities/localstorage';
 
 const WatchMovie = () => {
 
@@ -18,8 +18,9 @@ const WatchMovie = () => {
     useEffect(() => {
         const getMovieDetails = async () => {
             try {
-                const movieDetailMovie = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
-                setMovieDetail(movieDetailMovie.data);
+                const movieDetailData = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
+                setMovieDetail(movieDetailData.data);
+                setHistoryMovie(movieDetailData.data, 'movie');
                 //scroll into view when click on similar movie
             } catch (err) {
                 console.log(err);

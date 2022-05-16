@@ -7,6 +7,7 @@ import './watch.scss';
 import Episode from '../../components/episode';
 import Similar from '../../components/similar';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
+import { setHistoryMovie } from '../../utilities/localstorage';
 
 const WatchTv = () => {
     const { season, esp, id } = useParams();
@@ -25,6 +26,7 @@ const WatchTv = () => {
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`);
                 setTvDetails(response.data);
+                setHistoryMovie(response.data, 'tv')
             } catch (err) {
                 console.log(err);
             }

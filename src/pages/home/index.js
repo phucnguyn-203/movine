@@ -4,15 +4,16 @@ import './home.scss';
 import Banner from '../../components/banner';
 import MovieList from '../../components/movieList';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-
+import RecentlyMovie from '../../components/recentlyMovie';
 const Home = () => {
-    
+
     useDocumentTitle('Movine');
 
     return (
         <>
             <Banner />
             <div className='movie-list__container'>
+                <RecentlyMovie />
                 <MovieList
                     mediaType='movie'
                     type='trending'
