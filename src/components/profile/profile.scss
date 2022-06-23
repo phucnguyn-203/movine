@@ -1,0 +1,47 @@
+@use '../../scss/variables.scss';
+
+.profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+
+    .profile__avatar img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+
+    .profile__displayName {
+        color: variables.$white-color;
+        margin-left: 10px;
+    }
+
+    .profile__menu {
+        position: absolute;
+        bottom: -87px;
+        width: 100%;
+        background-color: rgba($color: variables.$black-color, $alpha: .4);
+        border-radius: 5px;
+        z-index: 1000000;
+
+        .proflie__menu-list {
+            list-style: none;
+
+            .profile__menu-list-item {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                color: #FFF;
+
+                a {
+                    text-decoration: none;
+                    color: #FFF;
+                }
+            }
+
+            .profile__menu-list-item:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}

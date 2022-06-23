@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import './watch.scss';
 import Similar from '../../components/similar';
+import Layout from '../../components/layout';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import { setHistoryMovie } from '../../utilities/localstorage';
 
@@ -30,32 +31,34 @@ const WatchMovie = () => {
     }, [id]);
 
     return (
-        <div className='container'>
-            <div className='video-wrapper'>
-                <iframe
-                    src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?id=${id}`}
-                    frameBorder='0'
-                    title='Movie Player'
-                    allowFullScreen
-                    width='100%'
-                    height='100%'
-                >
-                </iframe>
-            </div>
+        <Layout>
+            <div className='container'>
+                <div className='video-wrapper'>
+                    <iframe
+                        src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?id=${id}`}
+                        frameBorder='0'
+                        title='Movie Player'
+                        allowFullScreen
+                        width='100%'
+                        height='100%'
+                    >
+                    </iframe>
+                </div>
 
-            <div className='watch-movie__info'>
-                <h1 className='watch-movie__title'>{movieDetail?.title || movieDetail?.name}</h1>
-                <p className='watch-movie__overview'>{movieDetail?.overview}</p>
-                <p className='watch-movie__release-date'>{
-                    movieDetail?.release_date ? `Release date: ${movieDetail?.release_date}` : `Last episode: ${movieDetail?.last_air_date}`
-                }</p>
-            </div>
+                <div className='watch-movie__info'>
+                    <h1 className='watch-movie__title'>{movieDetail?.title || movieDetail?.name}</h1>
+                    <p className='watch-movie__overview'>{movieDetail?.overview}</p>
+                    <p className='watch-movie__release-date'>{
+                        movieDetail?.release_date ? `Release date: ${movieDetail?.release_date}` : `Last episode: ${movieDetail?.last_air_date}`
+                    }</p>
+                </div>
 
-            <Similar
-                mediaType='movie'
-                id={id}
-            />
-        </div>
+                <Similar
+                    mediaType='movie'
+                    id={id}
+                />
+            </div>
+        </Layout>
     );
 };
 

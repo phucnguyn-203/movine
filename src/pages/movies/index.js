@@ -6,6 +6,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
+import Layout from '../../components/layout';
 import '../../scss/variables.scss';
 
 const Movies = () => {
@@ -34,7 +35,7 @@ const Movies = () => {
 
 
     return (
-        <>
+        <Layout>
             {isLoading ? <Loading /> : <InfiniteScroll
                 dataLength={movies.length}
                 next={getMovies}
@@ -55,7 +56,7 @@ const Movies = () => {
                     </div>
                 </div>
             </InfiniteScroll>}
-        </>
+        </Layout>
     );
 };
 

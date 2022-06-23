@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
+import Layout from '../../components/layout';
 
 
 const SearchResult = () => {
@@ -37,7 +38,7 @@ const SearchResult = () => {
     }, []);
 
     return (
-        <>
+        <Layout>
             {isLoading ? <Loading /> : <div style={{ marginTop: 80 }}>
                 {searchMovie.length !== 0 ? <><h1 style={{ color: "#FFF", textAlign: "center" }}>Search Result For {searchKeyWord}</h1>
                     <InfiniteScroll
@@ -66,7 +67,7 @@ const SearchResult = () => {
                 }
             </div>
             }
-        </>
+        </Layout>
     );
 };
 

@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
+import Profile from '../profile';
 import './header.scss';
 
 const Header = () => {
+
+    const currentUser = useSelector(state => state.user.userInfo);
 
     useEffect(() => {
         const menuMobile = document.querySelector('.header__nav-mobile-icon');
@@ -137,7 +141,7 @@ const Header = () => {
                         </div>
                     </Link>
                 </div>
-                <button className='button'>Login</button>
+                {currentUser ? <Profile user={currentUser} /> : <Link className='button' to="/login">Login</Link>}
             </div>
         </header>
     );

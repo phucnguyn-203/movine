@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import './watch.scss';
 import Episode from '../../components/episode';
 import Similar from '../../components/similar';
+import Layout from '../../components/layout';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import { setHistoryMovie } from '../../utilities/localstorage';
 
@@ -64,38 +65,40 @@ const WatchTv = () => {
     }, [season])
 
     return (
-        <div className='container'>
-            <div ref={videoRef} className='video-wrapper'>
-                <iframe
-                    src={`${process.env.REACT_APP_TV_STREAMING_API_ENDPOINT}?id=${id}&s=${season}&e=${esp}`}
-                    frameBorder='0'
-                    title='Movie Player'
-                    allowFullScreen
-                    width='100%'
-                    height='100%'
-                >
-                </iframe>
+        <Layout>
+            <div className='container'>
+                <div ref={videoRef} className='video-wrapper'>
+                    <iframe
+                        src={`${process.env.REACT_APP_TV_STREAMING_API_ENDPOINT}?id=${id}&s=${season}&e=${esp}`}
+                        frameBorder='0'
+                        title='Movie Player'
+                        allowFullScreen
+                        width='100%'
+                        height='100%'
+                    >
+                    </iframe>
+                </div>
+
+                <div className='watch-movie__info'>
+                    <h1 className='watch-movie__title'>{tvDetails?.name}</h1>
+                    <p style={{ marginTop: 20, marginBottom: 20 }}>Season: {espDetails?.season_number}</p>
+                    <p style={{ marginTop: 20, marginBottom: 20 }}>Episode: {espDetails?.episode_number}</p>
+                    <p className='watch-movie__overview'>Overview: {espDetails?.overview}</p>
+                    <p className='watch-movie__release-date'>Air Date: {espDetails?.air_date}</p>
+                </div>
+
+                <h1 className='episode__title'>Episode</h1>
+                <Episode
+                    tvId={tvDetails?.id}
+                    episodes={episodes}
+                />
+
+                <Similar
+                    mediaType='tv'
+                    id={id}
+                />
             </div>
-
-            <div className='watch-movie__info'>
-                <h1 className='watch-movie__title'>{tvDetails?.name}</h1>
-                <p style={{ marginTop: 20, marginBottom: 20 }}>Season: {espDetails?.season_number}</p>
-                <p style={{ marginTop: 20, marginBottom: 20 }}>Episode: {espDetails?.episode_number}</p>
-                <p className='watch-movie__overview'>Overview: {espDetails?.overview}</p>
-                <p className='watch-movie__release-date'>Air Date: {espDetails?.air_date}</p>
-            </div>
-
-            <h1 className='episode__title'>Episode</h1>
-            <Episode
-                tvId={tvDetails?.id}
-                episodes={episodes}
-            />
-
-            <Similar
-                mediaType='tv'
-                id={id}
-            />
-        </div>
+        </Layout>
     );
 };
 

@@ -10,6 +10,11 @@ import WatchMovie from '../pages/watch/WatchMovie';
 import WatchTv from '../pages/watch/WatchTv';
 import Search from '../pages/search';
 import SearchResult from '../pages/search/SearchResult';
+import Login from '../pages/login';
+import Favorites from '../pages/favorites';
+
+// Private Router
+import PrivateRouter from './PrivateRouter';
 
 const Router = () => {
     return (
@@ -23,6 +28,12 @@ const Router = () => {
             <Route path='/watch/tv/:id/season/:season/esp/:esp' element={<WatchTv />} />
             <Route path='/search' element={<Search />} />
             <Route path='/results' element={<SearchResult />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/favorites' element={
+                <PrivateRouter>
+                    <Favorites />
+                </PrivateRouter>
+            } />
         </Routes>
     );
 };

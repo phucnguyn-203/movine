@@ -7,6 +7,7 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import CastList from '../../components/castList';
 import Similar from '../../components/similar';
+import Layout from '../../components/layout';
 import './details.scss';
 
 
@@ -36,7 +37,7 @@ const Details = () => {
     }, [mediaType, id]);
 
     return (
-        <>
+        <Layout>
             {isLoading ? <Loading /> : <>
                 <div ref={bannerRef} className='banner' style={{ backgroundImage: `url(${process.env.REACT_APP_IMAGE_ENDPOINT}${details?.backdrop_path})` }}>
                     <div className='movie__content'>
@@ -79,7 +80,7 @@ const Details = () => {
                     />
                 </div>
             </>}
-        </>
+        </Layout>
     );
 };
 

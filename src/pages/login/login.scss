@@ -1,0 +1,45 @@
+@use '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.login-background__container {
+    background-image: url(../../assets/img/login-background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .login__form {
+        width: 350px;
+        background-color: rgba($color: variables.$black-color, $alpha: .75);
+        padding: 15px;
+
+        .login__title {
+            color: variables.$white-color;
+            text-align: center;
+        }
+
+        .login-with__social {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+
+            .button-login__facebook {
+                @include button($bgColor: #45aaf2, $fontSize: 16px, $color: variables.$white-color);
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+            }
+
+            .button-login__google {
+                @include button($bgColor: #e74c3c, $fontSize: 16px, $color: variables.$white-color);
+                padding: 10px;
+                border-radius: 5px;
+            }
+        }
+
+
+    }
+}

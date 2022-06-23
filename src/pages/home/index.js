@@ -5,12 +5,14 @@ import Banner from '../../components/banner';
 import MovieList from '../../components/movieList';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import RecentlyMovie from '../../components/recentlyMovie';
+import Layout from '../../components/layout';
+
 const Home = () => {
 
     useDocumentTitle('Movine');
 
     return (
-        <>
+        <Layout>
             <Banner />
             <div className='movie-list__container'>
                 <RecentlyMovie />
@@ -42,7 +44,7 @@ const Home = () => {
                     type='top_rated'
                 />
             </div>
-        </>
+        </Layout>
     );
 
 };
