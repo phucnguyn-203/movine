@@ -5,30 +5,28 @@ import axios from 'axios';
 import Slider from '../slider';
 import './similar.scss';
 
-
 const Similar = ({ mediaType, id }) => {
     const [similarMovie, setSimilarMovie] = useState();
 
     useEffect(() => {
         const getSimilarMovie = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/${mediaType}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`);
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_ENDPOINT}/${mediaType}/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`,
+                );
                 setSimilarMovie(response.data.results);
             } catch (err) {
                 console.log(err);
             }
-        }
+        };
 
         getSimilarMovie();
-    }, [mediaType, id])
+    }, [mediaType, id]);
 
     return (
         <>
-            <h1 className='movie-list__title'>Similar movie</h1>
-            <Slider
-                movies={similarMovie}
-                mediaType={mediaType}
-            />
+            <h1 className="movie-list__title">Similar movie</h1>
+            <Slider movies={similarMovie} mediaType={mediaType} />
         </>
     );
 };

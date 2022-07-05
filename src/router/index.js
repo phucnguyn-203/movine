@@ -19,21 +19,24 @@ import PrivateRouter from './PrivateRouter';
 const Router = () => {
     return (
         <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/trending' element={<Trending />} />
-            <Route path='/movies' element={<Movies />} />
-            <Route path='/tvshows' element={<TvShows />} />
-            <Route path='/details/:mediaType/:id' element={<Details />} />
-            <Route path='/watch/movie/:id' element={<WatchMovie />} />
-            <Route path='/watch/tv/:id/season/:season/esp/:esp' element={<WatchTv />} />
-            <Route path='/search' element={<Search />} />
-            <Route path='/results' element={<SearchResult />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/favorites' element={
-                <PrivateRouter>
-                    <Favorites />
-                </PrivateRouter>
-            } />
+            <Route path="/" element={<Home />} />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/tvshows" element={<TvShows />} />
+            <Route path="/details/:mediaType/:id" element={<Details />} />
+            <Route path="/watch/movie/:id" element={<WatchMovie />} />
+            <Route path="/watch/tv/:id/season/:season/esp/:esp" element={<WatchTv />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/results" element={<SearchResult />} />
+            <Route path="/login" element={<Login />} />
+            <Route
+                path="/favorites"
+                element={
+                    <PrivateRouter>
+                        <Favorites />
+                    </PrivateRouter>
+                }
+            />
         </Routes>
     );
 };

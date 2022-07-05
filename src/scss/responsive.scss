@@ -2,10 +2,9 @@
 
 // PC
 @media (min-width: 1024px) {
-
 }
 
-// Tablet and Mobile 
+// Tablet and Mobile
 @media (max-width: 1023px) {
     .banner__poster {
         display: none;
@@ -16,18 +15,17 @@
     }
 }
 
-// Tablet 
+// Tablet
 @media (min-width: 740px) and (max-width: 1023px) {
-
 }
 
-// Mobile 
+// Mobile
 @media (max-width: 739px) {
     .header {
         padding: 0 15px;
         height: 50px;
     }
-    
+
     .header__nav {
         display: none !important;
     }
@@ -63,6 +61,4 @@
     .profile__displayName {
         display: none;
     }
-
-
 }

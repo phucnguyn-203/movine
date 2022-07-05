@@ -10,7 +10,6 @@ import Layout from '../../components/layout';
 import '../../scss/variables.scss';
 
 const Movies = () => {
-
     useDocumentTitle('Movies');
 
     const [page, setPage] = useState(1);
@@ -20,7 +19,9 @@ const Movies = () => {
 
     const getMovies = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`);
+            const response = await axios.get(
+                `${process.env.REACT_APP_API_ENDPOINT}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`,
+            );
             setMovies([...movies, ...response.data.results]);
             setTotalPages(response.data.total_pages);
             setPage(page + 1);
@@ -28,34 +29,30 @@ const Movies = () => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
     useEffect(() => {
         getMovies();
     }, []);
 
-
     return (
         <Layout>
-            {isLoading ? <Loading /> : <InfiniteScroll
-                dataLength={movies.length}
-                next={getMovies}
-                hasMore={page < totalPages}
-            >
-                <div className='grid wide'>
-                    <div className='row' style={{ marginTop: 80, paddingLeft: 12, paddingRight: 12 }}>
-                        {movies?.map(movie => (
-                            <div key={movie?.id} className='col l-2-4 m-4 c-6'>
-                                <div style={{ marginBottom: 24 }}>
-                                    <MovieItem
-                                        movie={movie}
-                                        mediaType='movie'
-                                    />
+            {isLoading ? (
+                <Loading />
+            ) : (
+                <InfiniteScroll dataLength={movies.length} next={getMovies} hasMore={page < totalPages}>
+                    <div className="grid wide">
+                        <div className="row" style={{ marginTop: 80, paddingLeft: 12, paddingRight: 12 }}>
+                            {movies?.map((movie) => (
+                                <div key={movie?.id} className="col l-2-4 m-4 c-6">
+                                    <div style={{ marginBottom: 24 }}>
+                                        <MovieItem movie={movie} mediaType="movie" />
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </InfiniteScroll>}
+                </InfiniteScroll>
+            )}
         </Layout>
     );
 };

@@ -1,6 +1,5 @@
 @use '../../scss/variables';
 
-
 .cast {
     display: block;
     text-decoration: none;
@@ -9,33 +8,33 @@
     background-color: variables.$black-color;
     margin-bottom: 24px;
     cursor: pointer;
-   
+
     .cast__profile-path {
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all linear .3s;
+            transition: all linear 0.3s;
         }
     }
 
     .cast__info {
         padding: 10px;
 
-        .cast__name, .cast__character {
+        .cast__name,
+        .cast__character {
             font-size: 15px;
             color: variables.$white-color;
             text-align: center;
-            transition: all linear .3s;
+            transition: all linear 0.3s;
             max-width: 100%;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
-    
+
         .cast__character {
             color: #f1c40f;
         }
     }
-    
 }

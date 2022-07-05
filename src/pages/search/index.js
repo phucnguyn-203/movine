@@ -5,7 +5,7 @@ import Layout from '../../components/layout';
 import './search.scss';
 
 const Search = () => {
-    useDocumentTitle("Search");
+    useDocumentTitle('Search');
 
     const [searchKeyWord, setSearchKeyWord] = useState();
 
@@ -13,21 +13,18 @@ const Search = () => {
 
     const navigateToSearchResult = () => {
         navigate(`/results?q=${searchKeyWord}`);
-    }
+    };
 
     return (
         <Layout>
-            <div className='search__container'>
-                <div className='search_form'>
+            <div className="search__container">
+                <div className="search_form">
                     <input
-                        className='search__input'
-                        placeholder='Search'
+                        className="search__input"
+                        placeholder="Search"
                         onChange={(event) => setSearchKeyWord(event.target.value)}
                     />
-                    <button
-                        className='search__button'
-                        onClick={navigateToSearchResult}
-                    >
+                    <button className="search__button" onClick={navigateToSearchResult}>
                         Search
                     </button>
                 </div>

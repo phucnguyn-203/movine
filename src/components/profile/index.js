@@ -4,16 +4,14 @@ import { authenticate } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import './profile.scss';
 
-
 const Profile = ({ user }) => {
-
     const { displayName, photoURL } = user;
     const [isDropdown, setIsDropdown] = useState();
     const profile = useRef(null);
 
     const handleDropdownMenu = () => {
         setIsDropdown(!isDropdown);
-    }
+    };
 
     const handleLogout = async () => {
         try {
@@ -21,7 +19,7 @@ const Profile = ({ user }) => {
         } catch (err) {
             console.log(err);
         }
-    }
+    };
 
     const handleClickOutSite = (event) => {
         if (profile.current?.contains(event.target)) {
@@ -30,7 +28,7 @@ const Profile = ({ user }) => {
         }
         //click outside
         setIsDropdown(false);
-    }
+    };
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutSite);
@@ -38,23 +36,24 @@ const Profile = ({ user }) => {
     }, []);
 
     return (
-        <div ref={profile} className='profile' onClick={handleDropdownMenu}>
-            <div className='profile__avatar'>
-                <img
-                    src={photoURL}
-                    alt="avatar"
-                />
+        <div ref={profile} className="profile" onClick={handleDropdownMenu}>
+            <div className="profile__avatar">
+                <img src={photoURL} alt="avatar" />
             </div>
-            <p className='profile__displayName'>{displayName}</p>
+            <p className="profile__displayName">{displayName}</p>
 
-            {isDropdown ? <div className='profile__menu'>
-                <ul className='proflie__menu-list'>
-                    <li className='profile__menu-list-item'>
-                        <Link to='/favorites'>Favorite</Link>
-                    </li>
-                    <li onClick={handleLogout} className='profile__menu-list-item'>Log Out</li>
-                </ul>
-            </div> : null}
+            {isDropdown ? (
+                <div className="profile__menu">
+                    <ul className="proflie__menu-list">
+                        <li className="profile__menu-list-item">
+                            <Link to="/favorites">Favorite</Link>
+                        </li>
+                        <li onClick={handleLogout} className="profile__menu-list-item">
+                            Log Out
+                        </li>
+                    </ul>
+                </div>
+            ) : null}
         </div>
     );
 };

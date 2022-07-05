@@ -12,25 +12,24 @@ const CastList = ({ mediaType, id }) => {
     useEffect(() => {
         const getCasts = async () => {
             try {
-                const response = await axios.get(`${process.env.REACT_APP_API_ENDPOINT}/${mediaType}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`);
+                const response = await axios.get(
+                    `${process.env.REACT_APP_API_ENDPOINT}/${mediaType}/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`,
+                );
                 setCasts(response?.data?.cast.slice(0, 10));
             } catch (err) {
                 console.log(err);
             }
-        }
+        };
 
         getCasts();
     }, [mediaType, id]);
 
     return (
-        <div className='grid wide'>
-            <h1 className='cast__title'>Cast</h1>
-            <div style={{paddingLeft: 8, paddingRight: 8}} className='row'>
-                {casts?.map(cast => (
-                    <Cast
-                        key={cast?.id}
-                        cast={cast}
-                    />
+        <div className="grid wide">
+            <h1 className="cast__title">Cast</h1>
+            <div style={{ paddingLeft: 8, paddingRight: 8 }} className="row">
+                {casts?.map((cast) => (
+                    <Cast key={cast?.id} cast={cast} />
                 ))}
             </div>
         </div>

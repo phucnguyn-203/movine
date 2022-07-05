@@ -12,7 +12,6 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import MovieItem from '../movieItem';
 
 const RecentlyMovie = () => {
-
     const [recentlyMovies, setRecentlyMovie] = useState(getHistoryMovies());
 
     const { width } = useWindowDimensions();
@@ -28,25 +27,21 @@ const RecentlyMovie = () => {
 
     return (
         <>
-            {recentlyMovies.length > 0 ? <>
-                <h1 className='movie-list__title'>Recently</h1>
-                <Swiper
-                    modules={[Navigation]}
-                    spaceBetween={20}
-                    slidesPerView={slidesItem}
-                    navigation
-                >
-                    {recentlyMovies?.slice()?.reverse()?.map(movie => (
-                        <SwiperSlide
-                            key={movie.id}
-                        >
-                            <MovieItem
-                                movie={movie}
-                                mediaType={movie.mediaType}
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper></> : null}
+            {recentlyMovies.length > 0 ? (
+                <>
+                    <h1 className="movie-list__title">Recently</h1>
+                    <Swiper modules={[Navigation]} spaceBetween={20} slidesPerView={slidesItem} navigation>
+                        {recentlyMovies
+                            ?.slice()
+                            ?.reverse()
+                            ?.map((movie) => (
+                                <SwiperSlide key={movie.id}>
+                                    <MovieItem movie={movie} mediaType={movie.mediaType} />
+                                </SwiperSlide>
+                            ))}
+                    </Swiper>
+                </>
+            ) : null}
         </>
     );
 };

@@ -13,7 +13,7 @@
 
     .login__form {
         width: 350px;
-        background-color: rgba($color: variables.$black-color, $alpha: .75);
+        background-color: rgba($color: variables.$black-color, $alpha: 0.75);
         padding: 15px;
 
         .login__title {
@@ -39,7 +39,5 @@
                 border-radius: 5px;
             }
         }
-
-
     }
 }

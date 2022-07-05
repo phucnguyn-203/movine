@@ -13,8 +13,8 @@ footer {
         color: variables.$white-color;
         margin-right: 10px;
         font-size: 30px;
-        transition: all linear .3s;
-        
+        transition: all linear 0.3s;
+
         &:hover {
             color: variables.$primary-color;
         }

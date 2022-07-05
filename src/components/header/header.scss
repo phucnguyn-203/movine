@@ -14,12 +14,12 @@
     background-color: transparent;
     padding: 0 30px;
     z-index: 100;
-    transition: all linear .3s;
+    transition: all linear 0.3s;
 
-    .header__nav-mobile-icon{
+    .header__nav-mobile-icon {
         display: none;
     }
-    
+
     .header__left-section {
         display: flex;
         align-items: center;
@@ -31,7 +31,7 @@
 
             .header__logo-link {
                 text-decoration: none;
-                color: variables.$white-color,
+                color: variables.$white-color;
             }
 
             .header__logo-highlight {
@@ -48,20 +48,18 @@
                 padding: 0 25px;
                 font-weight: 500;
                 font-size: 15px;
-                transition: all linear .3s;
+                transition: all linear 0.3s;
                 text-decoration: none;
                 color: variables.$white-color;
                 &:hover {
                     color: variables.$primary-color;
                 }
-               
             }
 
             .header__nav-item-link.active {
                 color: variables.$primary-color;
             }
         }
-        
     }
 
     .header__right-section {
@@ -78,7 +76,7 @@
         }
 
         .button {
-            @include button($bgColor:variables.$primary-color, $fontSize: 16px, $color: variables.$white-color);
+            @include button($bgColor: variables.$primary-color, $fontSize: 16px, $color: variables.$white-color);
             padding: 10px 20px;
             border-radius: 10px 5px;
         }
@@ -90,7 +88,7 @@
         right: 0;
         left: 0;
         bottom: 0;
-        background-color: rgba($color: #000000, $alpha: .5);
+        background-color: rgba($color: #000000, $alpha: 0.5);
         z-index: 1;
         display: none;
     }
@@ -104,7 +102,7 @@
         width: 250px;
         z-index: 2;
         transform: translateX(-250px);
-        transition: all linear .3s;
+        transition: all linear 0.3s;
 
         .header__nav-list-mobile {
             margin-top: 40px;
@@ -115,7 +113,6 @@
                 .header__nav-item-link-mobile {
                     text-decoration: none;
                     color: variables.$white-color;
-
                 }
 
                 .header__nav-item-link-mobile.active {
@@ -123,11 +120,10 @@
                 }
             }
         }
-        
     }
 }
 
 .header.header__toggle {
     background-color: variables.$black-color;
-    animation: animateToTop linear .4s;
+    animation: animateToTop linear 0.4s;
 }

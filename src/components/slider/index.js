@@ -7,9 +7,7 @@ import 'swiper/scss/navigation';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import MovieItem from '../movieItem';
 
-
 const Slider = ({ movies, mediaType }) => {
-
     const { width } = useWindowDimensions();
     //item is show on slider by width screen
     let slidesItem;
@@ -20,26 +18,16 @@ const Slider = ({ movies, mediaType }) => {
     } else {
         slidesItem = 2;
     }
-    
+
     return (
-        <Swiper
-            modules={[Navigation]}
-            spaceBetween={20}
-            slidesPerView={slidesItem}
-            navigation
-        >
-            {movies?.map(movie => (
-                <SwiperSlide
-                    key={movie.id}
-                >
-                    <MovieItem
-                        movie={movie}
-                        mediaType={mediaType}
-                    />
+        <Swiper modules={[Navigation]} spaceBetween={20} slidesPerView={slidesItem} navigation>
+            {movies?.map((movie) => (
+                <SwiperSlide key={movie.id}>
+                    <MovieItem movie={movie} mediaType={mediaType} />
                 </SwiperSlide>
             ))}
         </Swiper>
     );
-}
+};
 
 export default Slider;

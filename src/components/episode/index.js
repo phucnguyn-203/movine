@@ -7,7 +7,6 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import './episode.scss';
 
 const Episode = ({ episodes, tvId }) => {
-
     const { width } = useWindowDimensions();
     //item is show on slider by width screen
     let slidesItem;
@@ -19,33 +18,23 @@ const Episode = ({ episodes, tvId }) => {
         slidesItem = 2;
     }
     return (
-        <Swiper
-            modules={[Navigation]}
-            spaceBetween={20}
-            slidesPerView={slidesItem}
-            navigation
-        >
-            {episodes?.map(episode => (
-                <SwiperSlide
-                    key={episode?.id}
-                >
+        <Swiper modules={[Navigation]} spaceBetween={20} slidesPerView={slidesItem} navigation>
+            {episodes?.map((episode) => (
+                <SwiperSlide key={episode?.id}>
                     <NavLink
-                        className='episode-item'
+                        className="episode-item"
                         to={`/watch/tv/${tvId}/season/${episode?.season_number}/esp/${episode?.episode_number}`}
-                        style={({ isActive }) =>
-                            isActive ? { backgroundColor: '#f1c40f' } : undefined
-                        }
+                        style={({ isActive }) => (isActive ? { backgroundColor: '#f1c40f' } : undefined)}
                     >
-                        <div className='episode-poster'>
-                            <img src={`${process.env.REACT_APP_IMAGE_ENDPOINT}${episode?.still_path}`} alt='poster' />
+                        <div className="episode-poster">
+                            <img src={`${process.env.REACT_APP_IMAGE_ENDPOINT}${episode?.still_path}`} alt="poster" />
                         </div>
-                        <p className='episode-number'>Episode: {episode?.episode_number}</p>
+                        <p className="episode-number">Episode: {episode?.episode_number}</p>
                     </NavLink>
                 </SwiperSlide>
             ))}
         </Swiper>
     );
-
 };
 
 export default Episode;

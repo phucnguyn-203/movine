@@ -1,31 +1,31 @@
 @use '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
-.search__container{
+.search__container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: calc(100vh - 57.2px);
 
-   .search_form {
-    position: relative;
-    display: flex;
-    .search__input{
-        padding: 10px 5px;
-        border-radius: 5px;
-        outline: none;
-        width: 400px;
-        background-color: transparent;
-        color: variables.$white-color;
-        border: 1px solid #FFF;
-        font-size: 20px;
-    }
+    .search_form {
+        position: relative;
+        display: flex;
+        .search__input {
+            padding: 10px 5px;
+            border-radius: 5px;
+            outline: none;
+            width: 400px;
+            background-color: transparent;
+            color: variables.$white-color;
+            border: 1px solid #fff;
+            font-size: 20px;
+        }
 
-    .search__button {
-        @include button($bgColor:variables.$primary-color, $fontSize: 20px, $color: variables.$white-color);
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin-left: 10px;
+        .search__button {
+            @include button($bgColor: variables.$primary-color, $fontSize: 20px, $color: variables.$white-color);
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
     }
-   }
 }

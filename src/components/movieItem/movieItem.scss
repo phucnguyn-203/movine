@@ -1,6 +1,5 @@
 @use '../../scss/variables';
 
-
 .movie-item {
     border-radius: 10px;
     overflow: hidden;
@@ -20,7 +19,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all linear .3s;
+            transition: all linear 0.3s;
         }
     }
 
@@ -29,11 +28,10 @@
         color: variables.$white-color;
         padding: 10px;
         text-align: center;
-        transition: all linear .3s;
+        transition: all linear 0.3s;
         max-width: 100%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-
     }
 }

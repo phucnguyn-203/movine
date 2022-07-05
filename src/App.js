@@ -8,19 +8,20 @@ import Router from './router';
 import Loading from './components/loading';
 
 const App = () => {
-
     const [isloading, setIsloading] = useState(true);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const unsub = onAuthStateChanged(authenticate, user => {
+        const unsub = onAuthStateChanged(authenticate, (user) => {
             if (user) {
                 console.log(user);
-                dispatch(loggedIn({
-                    displayName: user.displayName,
-                    photoURL: user.photoURL,
-                    uid: user.uid
-                }));
+                dispatch(
+                    loggedIn({
+                        displayName: user.displayName,
+                        photoURL: user.photoURL,
+                        uid: user.uid,
+                    }),
+                );
                 setIsloading(false);
             } else {
                 setIsloading(false);
@@ -30,11 +31,7 @@ const App = () => {
         return () => unsub();
     }, []);
 
-    return (
-        <div className='App'>
-            {isloading ? <Loading /> : <Router />}
-        </div>
-    )
+    return <div className="App">{isloading ? <Loading /> : <Router />}</div>;
 };
 
 export default App;
