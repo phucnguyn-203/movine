@@ -35,7 +35,7 @@ const WatchMovie = () => {
             <div className='container'>
                 <div className='video-wrapper'>
                     <iframe
-                        src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?id=${id}`}
+                        src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?tmdb=${id}`}
                         frameBorder='0'
                         title='Movie Player'
                         allowFullScreen
