@@ -70,7 +70,7 @@ const WatchTv = () => {
     }, [season]);
 
     return (
-        <Layout>
+        <>
             <div className="container">
                 <div ref={videoRef} className="video-wrapper">
                     <iframe
@@ -96,7 +96,7 @@ const WatchTv = () => {
 
                 <Similar mediaType="tv" id={id} />
             </div>
-        </Layout>
+        </>
     );
 };
 

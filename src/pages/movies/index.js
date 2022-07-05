@@ -35,7 +35,7 @@ const Movies = () => {
     }, []);
 
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -53,7 +53,7 @@ const Movies = () => {
                     </div>
                 </InfiniteScroll>
             )}
-        </Layout>
+        </>
     );
 };
 

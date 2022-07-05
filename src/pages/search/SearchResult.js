@@ -40,7 +40,7 @@ const SearchResult = () => {
     }, []);
 
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -83,7 +83,7 @@ const SearchResult = () => {
                     )}
                 </div>
             )}
-        </Layout>
+        </>
     );
 };
 

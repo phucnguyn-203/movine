@@ -1,11 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
+
+import { publicRoutes, privateRoutes } from './router';
 import { loggedIn, loggedOut } from './features/user/userSlice';
 import { authenticate } from './firebase';
-import Router from './router';
 import Loading from './components/loading';
+import { DefaultLayout } from './components/layout';
 
 const App = () => {
     const [isloading, setIsloading] = useState(true);
@@ -14,7 +17,6 @@ const App = () => {
     useEffect(() => {
         const unsub = onAuthStateChanged(authenticate, (user) => {
             if (user) {
-                console.log(user);
                 dispatch(
                     loggedIn({
                         displayName: user.displayName,
@@ -31,7 +33,36 @@ const App = () => {
         return () => unsub();
     }, []);
 
-    return <div className="App">{isloading ? <Loading /> : <Router />}</div>;
+    return (
+        <>
+            {isloading ? (
+                <Loading />
+            ) : (
+                <Routes>
+                    {publicRoutes.map(({ path, element, layout }) => {
+                        let Layout = layout || DefaultLayout;
+                        if (layout) {
+                            Layout = layout;
+                        } else if (layout === null) {
+                            Layout = Fragment;
+                        }
+                        const Page = element;
+                        return (
+                            <Route
+                                key={path}
+                                path={path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            )}
+        </>
+    );
 };
 
 export default App;

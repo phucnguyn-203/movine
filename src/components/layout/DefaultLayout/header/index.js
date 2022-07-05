@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Profile from '../profile';
+import Profile from '../../../profile';
 import './header.scss';
 
 const Header = () => {

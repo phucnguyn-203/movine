@@ -16,7 +16,7 @@ const Search = () => {
     };
 
     return (
-        <Layout>
+        <>
             <div className="search__container">
                 <div className="search_form">
                     <input
@@ -29,7 +29,7 @@ const Search = () => {
                     </button>
                 </div>
             </div>
-        </Layout>
+        </>
     );
 };
 

@@ -37,7 +37,7 @@ const Details = () => {
     }, [mediaType, id]);
 
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -98,7 +98,7 @@ const Details = () => {
                     </div>
                 </>
             )}
-        </Layout>
+        </>
     );
 };
 

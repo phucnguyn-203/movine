@@ -32,7 +32,7 @@ const WatchMovie = () => {
     }, [id]);
 
     return (
-        <Layout>
+        <>
             <div className="container">
                 <div className="video-wrapper">
                     <iframe
@@ -57,7 +57,7 @@ const WatchMovie = () => {
 
                 <Similar mediaType="movie" id={id} />
             </div>
-        </Layout>
+        </>
     );
 };
 

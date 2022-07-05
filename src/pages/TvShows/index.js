@@ -36,7 +36,7 @@ const TvShows = () => {
     }, []);
 
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -54,7 +54,7 @@ const TvShows = () => {
                     </div>
                 </InfiniteScroll>
             )}
-        </Layout>
+        </>
     );
 };
 

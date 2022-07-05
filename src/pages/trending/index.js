@@ -37,7 +37,7 @@ const Trending = () => {
     }, []);
 
     return (
-        <Layout>
+        <>
             {isLoading ? (
                 <Loading />
             ) : (
@@ -55,7 +55,7 @@ const Trending = () => {
                     </div>
                 </InfiniteScroll>
             )}
-        </Layout>
+        </>
     );
 };
 

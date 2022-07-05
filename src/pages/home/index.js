@@ -11,7 +11,7 @@ const Home = () => {
     useDocumentTitle('Movine');
 
     return (
-        <Layout>
+        <>
             <Banner />
             <div className="movie-list__container">
                 <RecentlyMovie />
@@ -25,7 +25,7 @@ const Home = () => {
                 <MovieList mediaType="tv" type="popular" />
                 <MovieList mediaType="tv" type="top_rated" />
             </div>
-        </Layout>
+        </>
     );
 };
 
