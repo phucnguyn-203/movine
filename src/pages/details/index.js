@@ -7,7 +7,6 @@ import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import CastList from '../../components/castList';
 import Similar from '../../components/similar';
-import Layout from '../../components/layout';
 import './details.scss';
 
 const Details = () => {

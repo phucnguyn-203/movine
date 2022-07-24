@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Slider from '../slider';
-import './similar.scss';
 
 const Similar = ({ mediaType, id }) => {
     const [similarMovie, setSimilarMovie] = useState();

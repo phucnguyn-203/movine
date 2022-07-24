@@ -7,7 +7,6 @@ import { useSearchParams } from 'react-router-dom';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
-import Layout from '../../components/layout';
 
 const SearchResult = () => {
     const [searchParams] = useSearchParams();

@@ -4,7 +4,6 @@ import axios from 'axios';
 
 import './watch.scss';
 import Similar from '../../components/similar';
-import Layout from '../../components/layout';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import { setHistoryMovie } from '../../utilities/localstorage';
 

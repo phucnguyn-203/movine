@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
-import Layout from '../../components/layout';
 import './search.scss';
 
 const Search = () => {

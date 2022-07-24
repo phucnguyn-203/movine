@@ -37,11 +37,11 @@
     }
 
     .overplay.active {
-        display: block;
+        display: block !important;
     }
 
     .header__nav-mobile.active {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
     .banner__info {
         width: 100% !important;

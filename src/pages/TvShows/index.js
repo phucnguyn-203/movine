@@ -6,8 +6,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import MovieItem from '../../components/movieItem';
-import Layout from '../../components/layout';
-import '../../scss/grid.scss';
 
 const TvShows = () => {
     useDocumentTitle('Tv Shows');

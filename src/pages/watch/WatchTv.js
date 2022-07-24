@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import './watch.scss';
 import Episode from '../../components/episode';
 import Similar from '../../components/similar';
-import Layout from '../../components/layout';
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import { setHistoryMovie } from '../../utilities/localstorage';
 
