@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import axiosClient from '../../api/axiosClient';
 import { useParams } from 'react-router-dom';
 
 import './watch.scss';
@@ -24,9 +24,7 @@ const WatchTv = () => {
     useEffect(() => {
         const getTvDetails = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/tv/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
-                );
+                const response = await axiosClient.get(`/tv/${id}`);
                 setTvDetails(response.data);
                 setHistoryMovie(response.data, 'tv');
             } catch (err) {
@@ -40,9 +38,7 @@ const WatchTv = () => {
     useEffect(() => {
         const getEspDetails = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/tv/${id}/season/${season}/episode/${esp}?api_key=${process.env.REACT_APP_API_KEY}`,
-                );
+                const response = await axiosClient.get(`/tv/${id}/season/${season}/episode/${esp}`);
                 setEspDetails(response.data);
                 videoRef.current.scrollIntoView();
             } catch (err) {
@@ -56,9 +52,7 @@ const WatchTv = () => {
     useEffect(() => {
         const getEpisodes = async () => {
             try {
-                const response = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/tv/${id}/season/${season}?api_key=${process.env.REACT_APP_API_KEY}`,
-                );
+                const response = await axiosClient.get(`/tv/${id}/season/${season}`);
                 setEpisodes(response.data.episodes);
             } catch (err) {
                 console.log(err);

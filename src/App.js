@@ -9,6 +9,7 @@ import { loggedIn, loggedOut } from './features/user/userSlice';
 import { authenticate } from './firebase';
 import Loading from './components/loading';
 import { DefaultLayout } from './components/layout';
+import PrivateRoutes from './router/PrivateRouter';
 
 const App = () => {
     const [isloading, setIsloading] = useState(true);
@@ -17,6 +18,7 @@ const App = () => {
     useEffect(() => {
         const unsub = onAuthStateChanged(authenticate, (user) => {
             if (user) {
+                console.log(user);
                 dispatch(
                     loggedIn({
                         displayName: user.displayName,
@@ -57,6 +59,29 @@ const App = () => {
                                     </Layout>
                                 }
                             />
+                        );
+                    })}
+
+                    {privateRoutes.map(({ path, element, layout }) => {
+                        let Layout = layout || DefaultLayout;
+                        if (layout) {
+                            Layout = layout;
+                        } else if (layout === null) {
+                            Layout = Fragment;
+                        }
+                        const Page = element;
+                        return (
+                            <Route
+                                key={path}
+                                path={path}
+                                element={
+                                    <PrivateRoutes>
+                                        <Layout>
+                                            <Page />
+                                        </Layout>
+                                    </PrivateRoutes>
+                                }
+                            ></Route>
                         );
                     })}
                 </Routes>

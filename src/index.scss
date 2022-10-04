@@ -13,3 +13,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+.movie-list__container {
+    width: 1200px;
+    max-width: calc(100% - 32px);
+    margin: 50px auto;
+}

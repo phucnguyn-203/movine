@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosClient from '../../api/axiosClient';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
@@ -17,9 +17,7 @@ const TvShows = () => {
 
     const getTvShows = async () => {
         try {
-            const response = await axios.get(
-                `${process.env.REACT_APP_API_ENDPOINT}/tv/popular?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`,
-            );
+            const response = await axiosClient.get(`/tv/popular`, { params: { page } });
             setTvShows([...tvShows, ...response.data.results]);
             setTotalPages(response.data.total_pages);
             setPage(page + 1);

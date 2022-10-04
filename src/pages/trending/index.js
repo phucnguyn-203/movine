@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axiosClient from '../../api/axiosClient';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
@@ -17,9 +17,7 @@ const Trending = () => {
 
     const getTrending = async () => {
         try {
-            const response = await axios.get(
-                `${process.env.REACT_APP_API_ENDPOINT}/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`,
-            );
+            const response = await axiosClient.get(`/trending/all/day`, { params: { page } });
             setTrendings([...trendings, ...response.data.results]);
             setPage(page + 1);
             setTotalPages(response.data.total_pages);

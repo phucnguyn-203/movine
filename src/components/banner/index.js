@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import axiosClient from '../../api/axiosClient';
 
 import './banner.scss';
 import '../../scss/responsive.scss';
@@ -15,9 +15,7 @@ const Banner = () => {
             try {
                 //random movie for banner
                 const randomIndex = Math.floor(Math.random() * (19 - 0 + 1) + 0);
-                const response = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`,
-                );
+                const response = await axiosClient.get('/trending/all/day');
                 setBanner(response.data.results[randomIndex]);
             } catch (err) {
                 console.log(err);

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+import axiosClient from '../../api/axiosClient';
 
 import './watch.scss';
 import Similar from '../../components/similar';
@@ -17,9 +17,7 @@ const WatchMovie = () => {
     useEffect(() => {
         const getMovieDetails = async () => {
             try {
-                const movieDetailData = await axios.get(
-                    `${process.env.REACT_APP_API_ENDPOINT}/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`,
-                );
+                const movieDetailData = await axiosClient.get(`/movie/${id}`);
                 setMovieDetail(movieDetailData.data);
                 setHistoryMovie(movieDetailData.data, 'movie');
                 //scroll into view when click on similar movie
