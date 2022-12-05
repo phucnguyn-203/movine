@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, Fragment } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';

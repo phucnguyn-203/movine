@@ -26,7 +26,9 @@ const Movies = () => {
             console.log(err);
         }
     };
+
     useEffect(() => {
+        window.scrollTo(0, 0);
         getMovies();
     }, []);
 

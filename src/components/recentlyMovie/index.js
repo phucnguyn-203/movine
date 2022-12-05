@@ -17,9 +17,9 @@ const RecentlyMovie = () => {
     const { width } = useWindowDimensions();
     //item is show on slider by width screen
     let slidesItem;
-    if (width > 1024) {
+    if (width >= 1024) {
         slidesItem = 5;
-    } else if (width > 740 && width < 1023) {
+    } else if (width >= 740 && width <= 1023) {
         slidesItem = 3;
     } else {
         slidesItem = 2;

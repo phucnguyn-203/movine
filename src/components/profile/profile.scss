@@ -45,3 +45,9 @@
         }
     }
 }
+
+@media (max-width: 739px) {
+    .profile__displayName {
+        display: none;
+    }
+}

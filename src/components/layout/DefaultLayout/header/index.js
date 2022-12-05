@@ -1,99 +1,60 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import useWindowDimensions from '../../../../hooks/useWindowDimensions';
+import navigation from '../../../../utilities/nav';
 import Profile from '../../../profile';
 import './header.scss';
 
 const Header = () => {
     const currentUser = useSelector((state) => state.user.userInfo);
+    const { width } = useWindowDimensions();
+    const [isOpen, setIsOpen] = useState(false);
+    const [isToggleHeader, setIsToggleHeader] = useState(false);
 
     useEffect(() => {
-        const menuMobile = document.querySelector('.header__nav-mobile-icon');
-        const overplay = document.querySelector('.overplay');
-        const mobileMenu = document.querySelector('.header__nav-mobile');
-
-        const showMobileMenu = () => {
-            overplay.classList.add('active');
-            mobileMenu.classList.add('active');
-        };
-
-        const hideMobileMenu = () => {
-            mobileMenu.classList.remove('active');
-            overplay.classList.remove('active');
-        };
-
-        overplay.addEventListener('click', hideMobileMenu);
-        menuMobile.addEventListener('click', showMobileMenu);
-
-        //clean up
-        return () => {
-            overplay.removeEventListener('click', hideMobileMenu);
-            menuMobile.removeEventListener('click', showMobileMenu);
-        };
-    });
-
-    useEffect(() => {
-        const header = document.querySelector('.header');
         const toggleHeader = () => {
             if (window.scrollY > 25) {
-                header.classList.add('header__toggle');
+                setIsToggleHeader(true);
             } else {
-                header.classList.remove('header__toggle');
+                setIsToggleHeader(false);
             }
         };
         window.addEventListener('scroll', toggleHeader);
-
+        if (width <= 739) {
+            window.removeEventListener('scroll', toggleHeader);
+        }
         //clean up
         return () => window.removeEventListener('scroll', toggleHeader);
-    }, []);
+    }, [width]);
+
+    const handleToggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
 
     return (
-        <header className="header">
-            <div className="overplay"></div>
+        <header className={`header ${isToggleHeader ? 'header__toggle' : ''}`}>
+            <div className={`overplay ${isOpen ? 'active' : ''}`} onClick={handleToggleMenu}></div>
             {/*Mobile menu*/}
-            <div className="header__nav-mobile-icon">
+            <div className="header__nav-mobile-icon" onClick={handleToggleMenu}>
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
 
-            <nav className="header__nav-mobile">
+            <nav className={`header__nav-mobile ${isOpen ? 'active' : ''}`}>
                 <ul className="header__nav-list-mobile">
-                    <li className="header__nav-list-item-mobile">
-                        <NavLink
-                            to="/"
-                            className={`header__nav-item-link-mobile ${(isActive) =>
-                                isActive ? 'active' : undefined}`}
-                        >
-                            Home
-                        </NavLink>
-                    </li>
-                    <li className="header__nav-list-item-mobile">
-                        <NavLink
-                            to="/trending"
-                            className={`header__nav-item-link-mobile ${(isActive) =>
-                                isActive ? 'active' : undefined}`}
-                        >
-                            Trending
-                        </NavLink>
-                    </li>
-                    <li className="header__nav-list-item-mobile">
-                        <NavLink
-                            to="/movies"
-                            className={`header__nav-item-link-mobile ${(isActive) =>
-                                isActive ? 'active' : undefined}`}
-                        >
-                            Movies
-                        </NavLink>
-                    </li>
-                    <li className="header__nav-list-item-mobile">
-                        <NavLink
-                            to="/tvshows"
-                            className={`header__nav-item-link-mobile ${(isActive) =>
-                                isActive ? 'active' : undefined}`}
-                        >
-                            TV Shows
-                        </NavLink>
-                    </li>
+                    {navigation.map(({ label, path }) => (
+                        <li className="header__nav-list-item-mobile" key={path}>
+                            <NavLink
+                                to={path}
+                                className={`header__nav-item-link-mobile ${(isActive) =>
+                                    isActive ? 'active' : undefined}`}
+                                onClick={handleToggleMenu}
+                            >
+                                {label}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </nav>
 
@@ -106,38 +67,17 @@ const Header = () => {
                 </div>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
-                        <li className="header__nav-list-item">
-                            <NavLink
-                                to="/"
-                                className={`header__nav-item-link ${(isActive) => (isActive ? 'active' : undefined)}`}
-                            >
-                                Home
-                            </NavLink>
-                        </li>
-                        <li className="header__nav-list-item">
-                            <NavLink
-                                to="/trending"
-                                className={`header__nav-item-link ${(isActive) => (isActive ? 'active' : undefined)}`}
-                            >
-                                Trending
-                            </NavLink>
-                        </li>
-                        <li className="header__nav-list-item">
-                            <NavLink
-                                to="/movies"
-                                className={`header__nav-item-link ${(isActive) => (isActive ? 'active' : undefined)}`}
-                            >
-                                Movies
-                            </NavLink>
-                        </li>
-                        <li className="header__nav-list-item">
-                            <NavLink
-                                to="/tvshows"
-                                className={`header__nav-item-link ${(isActive) => (isActive ? 'active' : undefined)}`}
-                            >
-                                TV Shows
-                            </NavLink>
-                        </li>
+                        {navigation.map(({ label, path }) => (
+                            <li className="header__nav-list-item" key={path}>
+                                <NavLink
+                                    to={path}
+                                    className={`header__nav-item-link ${(isActive) =>
+                                        isActive ? 'active' : undefined}`}
+                                >
+                                    {label}
+                                </NavLink>
+                            </li>
+                        ))}
                     </ul>
                 </nav>
             </div>

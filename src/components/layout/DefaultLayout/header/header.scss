@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: variables.$header__height;
     background-color: transparent;
     padding: 0 30px;
     z-index: 100;
@@ -126,4 +126,32 @@
 .header.header__toggle {
     background-color: variables.$black-color;
     animation: animateToTop linear 0.4s;
+}
+
+@media (max-width: 739px) {
+
+    .header {
+        background-color: variables.$black-color;
+        padding: 0 15px;
+
+        .header__nav {
+            display: none;
+        }
+
+        .header__nav-mobile-icon {
+            display: block;
+            color: variables.$primary-color;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+
+        .overplay.active {
+            display: block;
+        }
+
+        .header__nav-mobile.active {
+            transform: translateX(0);
+        }
+}    
 }

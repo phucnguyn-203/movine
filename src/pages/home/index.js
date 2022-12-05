@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Banner from '../../components/banner';
 import MovieList from '../../components/movieList';
@@ -18,7 +18,9 @@ const listData = [
 
 const Home = () => {
     useDocumentTitle('Movine');
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             <Banner />
@@ -26,7 +28,7 @@ const Home = () => {
                 <RecentlyMovie />
                 {listData.map(({ mediaType, types }) => {
                     return types.map((type) => {
-                        return <MovieList mediaType={mediaType} type={type} />;
+                        return <MovieList mediaType={mediaType} type={type} key={type} />;
                     });
                 })}
             </div>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axiosClient from '../../api/axiosClient';
 
 import './banner.scss';
-import '../../scss/responsive.scss';
 
 const Banner = () => {
     //state for set banner
