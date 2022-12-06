@@ -1,7 +1,12 @@
 @use '../../scss/variables.scss';
 
+
 .cast__title {
     font-size: 25px;
     margin: 30px 0;
     color: variables.$white-color;
+    padding: 0 8px;
 }
+    
+
+

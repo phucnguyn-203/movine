@@ -69,3 +69,63 @@
         }
     }
 }
+
+@media  (min-width: 740px) and (max-width: 1023px) {
+    .banner {
+        .movie__content {
+            .movie__poster {
+                display: none;
+            }
+            .movie__info {
+                margin-left: 0;
+                .movie__title {
+                    font-size: 30px;
+                    margin-bottom: 10px;
+                }
+                .movie__overview {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+                .movie__release-date {
+                    margin-top: 10px;
+                }
+                .movie__genres {
+                    margin: 20px 0;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 739px) {
+    .banner {
+        margin-top: variables.$header__height;
+        .movie__content{
+            .movie__poster{
+                display: none;
+            }
+            .movie__info {
+                margin-left: 0;
+                .movie__title {
+                    font-size: 20px;
+                }
+                .movie__overview {
+                    display: none;
+                }
+                .movie__genres {
+                    margin: 10px 0;
+                    .movie__genres-item {
+                        padding: 5px;
+                    }
+                }
+
+                .button {
+                    padding: 10px 15px;
+                }
+            }
+        }
+    }
+}

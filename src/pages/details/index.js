@@ -68,7 +68,7 @@ const Details = () => {
                                 <div className="movie__genres">
                                     {details?.genres.map((genre) => (
                                         <div key={genre.id} className="movie__genres-item">
-                                            {genre.name}
+                                            <p>{genre.name}</p>
                                         </div>
                                     ))}
                                 </div>
