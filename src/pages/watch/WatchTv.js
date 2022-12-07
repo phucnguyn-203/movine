@@ -67,7 +67,7 @@ const WatchTv = () => {
             <div className="container">
                 <div ref={videoRef} className="video-wrapper">
                     <iframe
-                        src={`${process.env.REACT_APP_TV_STREAMING_API_ENDPOINT}?tmdb=${id}&sea=${season}&epi=${esp}`}
+                        src={`${process.env.REACT_APP_TV_STREAMING_API_ENDPOINT}?id=${id}&s=${season}&e=${esp}`}
                         frameBorder="0"
                         title="Movie Player"
                         allowFullScreen
