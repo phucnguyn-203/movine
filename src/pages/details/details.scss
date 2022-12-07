@@ -1,8 +1,23 @@
 @use '../../scss/variables.scss';
 @import '../../scss/mixins.scss';
 
-.banner {
-    @include banner();
+.movie__background {
+    position: relative;
+    padding-top: 50%;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+    }
 
     .movie__content {
         position: absolute;
@@ -49,83 +64,59 @@
 
             .movie__genres {
                 display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
                 margin: 30px 0;
                 .movie__genres-item {
-                    margin-right: 20px;
                     border: 2px solid variables.$primary-color;
                     padding: 10px;
                     border-radius: 50px;
                 }
             }
 
-            .button {
-                @include button($bgColor: variables.$primary-color, $fontSize: 16px, $color: variables.$white-color);
-                padding: 15px 20px;
-                margin-right: 20px;
-                border-radius: 10px;
-                font-weight: 700;
-                text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            .movie__info-action {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+                .button {
+                    @include button($bgColor: variables.$primary-color, $fontSize: 16px, $color: variables.$white-color);
+                    padding: 15px 20px;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1023px) {
+    .movie__background {
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .movie__content {
+            position: unset;
+            transform: unset;
+            margin: 80px 0;
+            flex-direction: column;
+            gap: 20px 0;
+            .movie__info {
+                margin-left: 0;
+                .movie__title {
+                    text-align: center;
+                }
             }
         }
     }
 }
 
 @media  (min-width: 740px) and (max-width: 1023px) {
-    .banner {
-        .movie__content {
-            .movie__poster {
-                display: none;
-            }
-            .movie__info {
-                margin-left: 0;
-                .movie__title {
-                    font-size: 30px;
-                    margin-bottom: 10px;
-                }
-                .movie__overview {
-                    display: -webkit-box;
-                    -webkit-line-clamp: 1;
-                    -webkit-box-orient: vertical;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                }
-                .movie__release-date {
-                    margin-top: 10px;
-                }
-                .movie__genres {
-                    margin: 20px 0;
-                }
-            }
-        }
-    }
+    
 }
 
 @media (max-width: 739px) {
-    .banner {
-        margin-top: variables.$header__height;
-        .movie__content{
-            .movie__poster{
-                display: none;
-            }
-            .movie__info {
-                margin-left: 0;
-                .movie__title {
-                    font-size: 20px;
-                }
-                .movie__overview {
-                    display: none;
-                }
-                .movie__genres {
-                    margin: 10px 0;
-                    .movie__genres-item {
-                        padding: 5px;
-                    }
-                }
-
-                .button {
-                    padding: 10px 15px;
-                }
-            }
-        }
-    }
+    
 }

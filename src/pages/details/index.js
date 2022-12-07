@@ -43,7 +43,7 @@ const Details = () => {
                 <>
                     <div
                         ref={bannerRef}
-                        className="banner"
+                        className="movie__background"
                         style={{
                             backgroundImage: `url(${process.env.REACT_APP_IMAGE_ENDPOINT}${details?.backdrop_path})`,
                         }}
@@ -73,7 +73,7 @@ const Details = () => {
                                     ))}
                                 </div>
 
-                                <div>
+                                <div className="movie__info-action">
                                     <Link
                                         to={
                                             mediaType === 'movie'
