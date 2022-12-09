@@ -1,21 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import useDocumentTitle from '../../hooks/useDocumentTitle';
 import Loading from '../../components/loading';
 import CastList from '../../components/castList';
 import Similar from '../../components/similar';
+import { addDocument, getDocumentsByCondition } from '../../firebase';
+import { useSelector } from 'react-redux';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './details.scss';
 
 const Details = () => {
     const { mediaType, id } = useParams();
+    const navigate = useNavigate();
+    const currentUser = useSelector((state) => state.user.userInfo);
     //state to store details movie
     const [details, setDetails] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const bannerRef = useRef();
-
     useDocumentTitle(`${details?.title || details?.name}`);
 
     useEffect(() => {
@@ -34,6 +38,52 @@ const Details = () => {
         };
         getDetails();
     }, [mediaType, id]);
+
+    const handleAddFavoriteList = async () => {
+        if (currentUser) {
+            try {
+                const favoriteMovies = await getDocumentsByCondition('favorite_movies', {
+                    field: 'userId',
+                    operator: '==',
+                    expressions: currentUser.uid,
+                });
+                const isExistMovie = favoriteMovies.find((movie) => movie.movieDetails.id === details.id);
+                if (isExistMovie) {
+                    toast.error('Movie already existed', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: 'dark',
+                    });
+                    return;
+                }
+                await addDocument('favorite_movies', {
+                    userId: currentUser.uid,
+                    movieDetails: {
+                        ...details,
+                    },
+                });
+                toast.success('Add new movie success', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: 'dark',
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            navigate('/login');
+        }
+    };
 
     return (
         <>
@@ -84,7 +134,9 @@ const Details = () => {
                                     >
                                         Watch Now
                                     </Link>
-                                    <button className="button">Add to favorites</button>
+                                    <button className="button" onClick={handleAddFavoriteList}>
+                                        Add to favorites
+                                    </button>
                                 </div>
                             </div>
                         </div>

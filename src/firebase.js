@@ -1,7 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithPopup, getAdditionalUserInfo } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import {
+    getFirestore,
+    setDoc,
+    doc,
+    Timestamp,
+    addDoc,
+    collection,
+    getDocs,
+    query,
+    where,
+    deleteDoc,
+} from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,12 +34,63 @@ const app = initializeApp(firebaseConfig);
 const authenticate = getAuth(app);
 const database = getFirestore(app);
 
-export { authenticate };
+export { authenticate, database };
+
+const setDocument = async (collection, id, data) => {
+    await setDoc(doc(database, collection, id), {
+        ...data,
+        createAt: Timestamp.fromDate(new Date()),
+    });
+};
+
+export { setDocument };
+
+const addDocument = async (collectionName, data) => {
+    await addDoc(collection(database, collectionName), {
+        ...data,
+        createdAt: Timestamp.fromDate(new Date()),
+    });
+};
+export { addDocument };
+
+const getDocumentsByCondition = async (collectionName, condition) => {
+    const documents = [];
+    const q = query(
+        collection(database, collectionName),
+        where(condition.field, condition.operator, condition.expressions),
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        documents.push(doc.data());
+    });
+    return documents;
+};
+
+export { getDocumentsByCondition };
+
+const deleteDocument = async (collectionName, id) => {
+    await deleteDoc(doc(database, collectionName, id));
+};
+
+export { deleteDocument };
 
 const signInWithProvider = async (provider) => {
     const response = await signInWithPopup(authenticate, provider);
     const additionUserInfo = getAdditionalUserInfo(response);
-    console.log(additionUserInfo);
+    if (additionUserInfo.isNewUser) {
+        const { user } = response;
+        const userData = {
+            uid: user.uid,
+            displayName: user.displayName,
+            email: user.email,
+            photoURL: user.photoURL,
+        };
+        try {
+            await setDocument('users', user.uid, userData);
+        } catch (err) {
+            console.log(err);
+        }
+    }
 };
 
 export { signInWithProvider };

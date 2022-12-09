@@ -1,0 +1,5 @@
+@use '../../../scss/variables.scss';
+
+.content {
+    min-height: calc(100vh - variables.$header__height - 80px);
+}

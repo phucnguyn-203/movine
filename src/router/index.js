@@ -8,7 +8,7 @@ import WatchTv from '../pages/watch/WatchTv';
 import Search from '../pages/search';
 import SearchResult from '../pages/search/SearchResult';
 import Login from '../pages/login';
-import Favorites from '../pages/favorites';
+import Favorite from '../pages/favorite';
 
 export const publicRoutes = [
     {
@@ -56,7 +56,7 @@ export const publicRoutes = [
 
 export const privateRoutes = [
     {
-        path: '/favorites',
-        element: Favorites,
+        path: '/favorite',
+        element: Favorite,
     },
 ];

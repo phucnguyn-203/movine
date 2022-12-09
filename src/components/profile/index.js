@@ -46,7 +46,7 @@ const Profile = ({ user }) => {
                 <div className="profile__menu">
                     <ul className="proflie__menu-list">
                         <li className="profile__menu-list-item">
-                            <Link to="/favorites">Favorite</Link>
+                            <Link to="/favorite">Favorite</Link>
                         </li>
                         <li onClick={handleLogout} className="profile__menu-list-item">
                             Log Out

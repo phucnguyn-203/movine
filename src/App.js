@@ -17,7 +17,6 @@ const App = () => {
     useEffect(() => {
         const unsub = onAuthStateChanged(authenticate, (user) => {
             if (user) {
-                console.log(user);
                 dispatch(
                     loggedIn({
                         displayName: user.displayName,
