@@ -35,44 +35,22 @@ const Header = () => {
 
     return (
         <header className={`header ${isToggleHeader ? 'header__toggle' : ''}`}>
-            <div className={`overplay ${isOpen ? 'active' : ''}`} onClick={handleToggleMenu}></div>
-            {/*Mobile menu*/}
-            <div className="header__nav-mobile-icon" onClick={handleToggleMenu}>
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-
-            <nav className={`header__nav-mobile ${isOpen ? 'active' : ''}`}>
-                <ul className="header__nav-list-mobile">
-                    {navigation.map(({ label, path }) => (
-                        <li className="header__nav-list-item-mobile" key={path}>
-                            <NavLink
-                                to={path}
-                                className={`header__nav-item-link-mobile ${(isActive) =>
-                                    isActive ? 'active' : undefined}`}
-                                onClick={handleToggleMenu}
-                            >
-                                {label}
-                            </NavLink>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-
-            {/********************************************/}
-            <div className="header__left-section">
-                <div className="header__logo">
-                    <Link to="/" className="header__logo-link">
-                        MOV<span className="header__logo-highlight">INE</span>
-                    </Link>
+            <div className="header__container">
+                <div className={`overplay ${isOpen ? 'active' : ''}`} onClick={handleToggleMenu}></div>
+                {/*Mobile menu*/}
+                <div className="header__nav-mobile-icon" onClick={handleToggleMenu}>
+                    <ion-icon name="menu-outline"></ion-icon>
                 </div>
-                <nav className="header__nav">
-                    <ul className="header__nav-list">
+
+                <nav className={`header__nav-mobile ${isOpen ? 'active' : ''}`}>
+                    <ul className="header__nav-list-mobile">
                         {navigation.map(({ label, path }) => (
-                            <li className="header__nav-list-item" key={path}>
+                            <li className="header__nav-list-item-mobile" key={path}>
                                 <NavLink
                                     to={path}
-                                    className={`header__nav-item-link ${(isActive) =>
+                                    className={`header__nav-item-link-mobile ${(isActive) =>
                                         isActive ? 'active' : undefined}`}
+                                    onClick={handleToggleMenu}
                                 >
                                     {label}
                                 </NavLink>
@@ -80,23 +58,47 @@ const Header = () => {
                         ))}
                     </ul>
                 </nav>
-            </div>
 
-            <div className="header__right-section">
-                <div className="header__search">
-                    <Link to="/search" style={{ display: 'block' }}>
-                        <div className="header__search-icon">
-                            <ion-icon name="search"></ion-icon>
-                        </div>
-                    </Link>
+                {/********************************************/}
+                <div className="header__left-section">
+                    <div className="header__logo">
+                        <Link to="/" className="header__logo-link">
+                            MOV<span className="header__logo-highlight">INE</span>
+                        </Link>
+                    </div>
+                    <nav className="header__nav">
+                        <ul className="header__nav-list">
+                            {navigation.map(({ label, path }) => (
+                                <li className="header__nav-list-item" key={path}>
+                                    <NavLink
+                                        to={path}
+                                        className={`header__nav-item-link ${(isActive) =>
+                                            isActive ? 'active' : undefined}`}
+                                    >
+                                        {label}
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
                 </div>
-                {currentUser ? (
-                    <Profile user={currentUser} />
-                ) : (
-                    <Link className="button" to="/login">
-                        Login
-                    </Link>
-                )}
+
+                <div className="header__right-section">
+                    <div className="header__search">
+                        <Link to="/search" style={{ display: 'block' }}>
+                            <div className="header__search-icon">
+                                <ion-icon name="search"></ion-icon>
+                            </div>
+                        </Link>
+                    </div>
+                    {currentUser ? (
+                        <Profile user={currentUser} />
+                    ) : (
+                        <Link className="button" to="/login">
+                            Login
+                        </Link>
+                    )}
+                </div>
             </div>
         </header>
     );

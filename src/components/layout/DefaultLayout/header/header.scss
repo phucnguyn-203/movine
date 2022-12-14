@@ -7,14 +7,18 @@
     top: 0;
     left: 0;
     right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: variables.$header__height;
     background-color: transparent;
-    padding: 0 30px;
     z-index: 100;
     transition: all linear 0.3s;
+
+   .header__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: variables.$header__height;
+        width: 1200px;
+        max-width: calc(100% - 32px);
+        margin: 0 auto;
 
     .header__nav-mobile-icon {
         display: none;
@@ -121,6 +125,7 @@
             }
         }
     }
+   }
 }
 
 .header.header__toggle {
@@ -132,8 +137,6 @@
 
     .header {
         background-color: variables.$black-color;
-        padding: 0 15px;
-
         .header__nav {
             display: none;
         }

@@ -31,17 +31,18 @@ const WatchMovie = () => {
     return (
         <>
             <div className="container">
-                <div className="video-wrapper">
-                    <iframe
-                        src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?id=${id}`}
-                        frameBorder="0"
-                        title="Movie Player"
-                        allowFullScreen
-                        width="100%"
-                        height="100%"
-                    ></iframe>
+                <div className="watch__container">
+                    <div className="video-wrapper">
+                        <iframe
+                            src={`${process.env.REACT_APP_MOVIE_STREAMING_API_ENDPOINT}?id=${id}`}
+                            frameBorder="0"
+                            title="Movie Player"
+                            allowFullScreen
+                            width="100%"
+                            height="100%"
+                        ></iframe>
+                    </div>
                 </div>
-
                 <div className="watch-movie__info">
                     <h1 className="watch-movie__title">{movieDetail?.title || movieDetail?.name}</h1>
                     <p className="watch-movie__overview">{movieDetail?.overview}</p>

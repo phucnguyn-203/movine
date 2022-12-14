@@ -61,22 +61,21 @@ const Details = () => {
                     });
                     return;
                 }
-                await addDocument('favorite_movies', {
-                    userId: currentUser.uid,
-                    movieDetails: {
-                        ...details,
+
+                toast.promise(
+                    addDocument('favorite_movies', {
+                        userId: currentUser.uid,
+                        movieDetails: {
+                            mediaType,
+                            ...details,
+                        },
+                    }),
+                    {
+                        pending: 'Movie is adding',
+                        success: 'Add new movie success👌',
+                        error: 'Add new movie error🤯',
                     },
-                });
-                toast.success('Add new movie success', {
-                    position: 'top-right',
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: 'dark',
-                });
+                );
             } catch (err) {
                 console.log(err);
             }

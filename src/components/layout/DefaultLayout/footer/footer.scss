@@ -1,13 +1,17 @@
 @use '../../../../scss/variables.scss';
 
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 30px;
+    padding: 10px 0;
     color: variables.$white-color;
     background-color: variables.$black-color;
 
+   .footer__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 1200px;
+        max-width: calc(100% - 32px);
+        margin: 0 auto;
     .footer__social-link {
         text-decoration: none;
         color: variables.$white-color;
@@ -19,4 +23,5 @@ footer {
             color: variables.$primary-color;
         }
     }
+   }
 }

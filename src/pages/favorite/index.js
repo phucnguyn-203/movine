@@ -28,7 +28,7 @@ const Favorite = () => {
             setIsLoading(false);
         });
         return () => unsubscribe();
-    }, [favoriteList]);
+    }, []);
 
     const handleDeleteMovie = async (id) => {
         try {
@@ -49,9 +49,9 @@ const Favorite = () => {
                             <div key={movie.id} className="col l-2-4 m-4 c-6">
                                 <div className="movie__item-container">
                                     <MovieItem movie={movie.movieDetails} mediaType={movie.movieDetails.mediaType} />
-                                    <div className="close" onClick={() => handleDeleteMovie(movie.id)}>
-                                        <p>X</p>
-                                    </div>
+                                    <button className="button" onClick={() => handleDeleteMovie(movie.id)}>
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
                         ))}

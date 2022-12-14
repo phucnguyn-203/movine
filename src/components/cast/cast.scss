@@ -6,7 +6,7 @@
     border-radius: 10px;
     overflow: hidden;
     background-color: variables.$black-color;
-    margin-bottom: 24px;
+    height: 100%;
     cursor: pointer;
 
     .cast__profile-path {
@@ -28,9 +28,6 @@
             text-align: center;
             transition: all linear 0.3s;
             max-width: 100%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
 
         .cast__character {
