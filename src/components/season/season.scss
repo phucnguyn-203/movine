@@ -30,6 +30,7 @@
         gap: 0 20px;
         background-color: variables.$black-color;
         .esp__poster {
+            flex: 1;
             width: 60%;
             height: 100%;
             img {
@@ -40,9 +41,9 @@
             }
         }
         .esp__info {
+            flex: 1;
             color: variables.$white-color;
             width: 40%;
-            flex: 1;
             padding: 10px;
             .esp__overview {
                 display: -webkit-box;
@@ -72,6 +73,12 @@
         .esp__item {
             .esp__poster {
                 width: 20%;
+                flex: unset;
+            }
+            .esp__info {
+                .esp__overview {
+                    -webkit-line-clamp: 2;
+                }
             }
         }
     }
