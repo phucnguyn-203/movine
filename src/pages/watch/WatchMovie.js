@@ -15,6 +15,7 @@ const WatchMovie = () => {
     useDocumentTitle(`Watch | ${movieDetail?.title || movieDetail?.name}`);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const getMovieDetails = async () => {
             try {
                 const movieDetailData = await axiosClient.get(`/movie/${id}`);

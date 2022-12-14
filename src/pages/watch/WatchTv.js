@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axiosClient from '../../api/axiosClient';
@@ -15,12 +15,11 @@ const WatchTv = () => {
     const [espDetails, setEspDetails] = useState();
     const [currentSeason, setCurrentSeason] = useState(1);
 
-    const videoRef = useRef();
-
     useDocumentTitle(`Watch | ${tvDetails?.name}`);
 
     // get details of tv show
     useEffect(() => {
+        window.scrollTo(0, 0);
         const getTvDetails = async () => {
             try {
                 const response = await axiosClient.get(`/tv/${id}`);
@@ -39,7 +38,6 @@ const WatchTv = () => {
             try {
                 const response = await axiosClient.get(`/tv/${id}/season/${season}/episode/${esp}`);
                 setEspDetails(response.data);
-                videoRef.current.scrollIntoView();
             } catch (err) {
                 console.log(err);
             }
@@ -51,7 +49,7 @@ const WatchTv = () => {
         <>
             <div className="container">
                 <div className="watch__container">
-                    <div ref={videoRef} className="video-wrapper tv__wrapper ">
+                    <div className="video-wrapper tv__wrapper ">
                         <iframe
                             src={`${process.env.REACT_APP_TV_STREAMING_API_ENDPOINT}?id=${id}&s=${season}&e=${esp}`}
                             frameBorder="0"
