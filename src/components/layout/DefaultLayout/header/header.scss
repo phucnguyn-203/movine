@@ -137,24 +137,26 @@
 
     .header {
         background-color: variables.$black-color;
-        .header__nav {
-            display: none;
-        }
-
-        .header__nav-mobile-icon {
-            display: block;
-            color: variables.$primary-color;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-
-        .overplay.active {
-            display: block;
-        }
-
-        .header__nav-mobile.active {
-            transform: translateX(0);
+        .header__container {
+            .header__nav {
+                display: none;
+            }
+    
+            .header__nav-mobile-icon {
+                display: block;
+                color: variables.$primary-color;
+                font-size: 30px;
+                cursor: pointer;
+            }
+    
+    
+            .overplay.active {
+                display: block;
+            }
+    
+            .header__nav-mobile.active {
+                transform: translateX(0);
+            }
         }
 }    
 }

@@ -27,7 +27,7 @@ const CastList = ({ mediaType, id }) => {
     return (
         <div className="grid wide">
             <h1 className="cast__title">Cast</h1>
-            <div style={{ paddingLeft: 8, paddingRight: 8, rowGap: 24 }} className="row">
+            <div className="row pd-content">
                 {casts?.map((cast) => (
                     <Cast key={cast?.id} cast={cast} />
                 ))}

@@ -2,30 +2,31 @@
 @import '../../scss/mixins.scss';
 
 .search__container {
+    margin: 100px 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: calc(100vh - 57.2px);
 
     .search_form {
-        position: relative;
-        display: flex;
+        width: 400px;
+        max-width: calc(100% - 16px);
         .search__input {
             padding: 10px 5px;
             border-radius: 5px;
             outline: none;
-            width: 400px;
+            width: 100%;
             background-color: transparent;
             color: variables.$white-color;
             border: 1px solid #fff;
             font-size: 20px;
         }
-
-        .search__button {
-            @include button($bgColor: variables.$primary-color, $fontSize: 20px, $color: variables.$white-color);
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-left: 10px;
+    }
+    .search__result-container {
+        margin-top: 50px;
+        .searching, .no-result {
+            text-align: center;
+            color: variables.$white-color;
         }
+
     }
 }

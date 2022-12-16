@@ -39,12 +39,10 @@ const Trending = () => {
             ) : (
                 <InfiniteScroll dataLength={trendings.length} next={getTrending} hasMore={page < totalPages}>
                     <div className="grid wide">
-                        <div className="row" style={{ marginTop: 80, paddingLeft: 12, paddingRight: 12 }}>
+                        <div className="row page__mt pd-content">
                             {trendings?.map((trending) => (
                                 <div key={trending?.id} className="col l-2-4 m-4 c-6">
-                                    <div style={{ marginBottom: 24 }}>
-                                        <MovieItem movie={trending} mediaType={trending?.media_type} />
-                                    </div>
+                                    <MovieItem movie={trending} mediaType={trending?.media_type} />
                                 </div>
                             ))}
                         </div>

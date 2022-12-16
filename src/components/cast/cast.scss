@@ -1,37 +1,41 @@
 @use '../../scss/variables';
 
-.cast {
-    display: block;
-    text-decoration: none;
-    border-radius: 10px;
-    overflow: hidden;
-    background-color: variables.$black-color;
-    height: 100%;
-    cursor: pointer;
-
-    .cast__profile-path {
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all linear 0.3s;
+.cast__item {
+    margin-bottom: 24px;
+    .cast {
+        display: block;
+        text-decoration: none;
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: variables.$black-color;
+        height: 100%;
+        cursor: pointer;
+    
+        .cast__profile-path {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: all linear 0.3s;
+            }
+        }
+    
+        .cast__info {
+            padding: 10px;
+    
+            .cast__name,
+            .cast__character {
+                font-size: 15px;
+                color: variables.$white-color;
+                text-align: center;
+                transition: all linear 0.3s;
+                max-width: 100%;
+            }
+    
+            .cast__character {
+                color: #f1c40f;
+            }
         }
     }
-
-    .cast__info {
-        padding: 10px;
-
-        .cast__name,
-        .cast__character {
-            font-size: 15px;
-            color: variables.$white-color;
-            text-align: center;
-            transition: all linear 0.3s;
-            max-width: 100%;
-        }
-
-        .cast__character {
-            color: #f1c40f;
-        }
-    }
+    
 }

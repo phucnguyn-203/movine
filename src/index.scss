@@ -19,3 +19,11 @@ body {
     max-width: calc(100% - 32px);
     margin: 50px auto;
 }
+
+.page__mt {
+    margin-top: calc(variables.$header__height + 20px);
+}
+
+.pd-content{
+    padding: 0 16px;
+}

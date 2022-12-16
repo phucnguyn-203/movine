@@ -39,12 +39,10 @@ const Movies = () => {
             ) : (
                 <InfiniteScroll dataLength={movies.length} next={getMovies} hasMore={page < totalPages}>
                     <div className="grid wide">
-                        <div className="row" style={{ marginTop: 80, paddingLeft: 12, paddingRight: 12 }}>
+                        <div className="row page__mt pd-content">
                             {movies?.map((movie) => (
                                 <div key={movie?.id} className="col l-2-4 m-4 c-6">
-                                    <div style={{ marginBottom: 24 }}>
-                                        <MovieItem movie={movie} mediaType="movie" />
-                                    </div>
+                                    <MovieItem movie={movie} mediaType="movie" />
                                 </div>
                             ))}
                         </div>

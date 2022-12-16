@@ -5,6 +5,7 @@
     overflow: hidden;
     background-color: variables.$black-color;
     cursor: pointer;
+    margin-bottom: 24px;
     &:hover .movie-poster {
         img {
             opacity: 0.5;
